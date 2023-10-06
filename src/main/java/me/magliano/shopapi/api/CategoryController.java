@@ -21,14 +21,15 @@ public class CategoryController {
     ProductService productService;
 
 
+    //restistuisce la pagina dei prodotti di una specifica categoria
     @GetMapping("/category/{type}")
     public CategoryPage showOne(@PathVariable("type") Integer categoryType,
                                 @RequestParam(value = "page", defaultValue = "1") Integer page,
                                 @RequestParam(value = "size", defaultValue = "3") Integer size) {
 
         ProductCategory cat = categoryService.findByCategoryType(categoryType);
-        PageRequest request = PageRequest.of(page - 1, size);
-        Page<ProductInfo> productInCategory = productService.findAllInCategory(categoryType, request);
+        PageRequest request = PageRequest.of(page - 1, size); //Indico la pagina desiderata e la dimensione
+        Page<ProductInfo> productInCategory = productService.findAllInCategory(categoryType, request); //restituisce una pagina di oggetti associati ad una categoria specifica usando le informazioni di request
         var tmp = new CategoryPage("", productInCategory);
         tmp.setCategory(cat.getCategoryName());
         return tmp;

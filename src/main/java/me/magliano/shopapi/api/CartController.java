@@ -20,7 +20,7 @@ import java.security.Principal;
 import java.util.Collection;
 import java.util.Collections;
 
-
+//SERVE A CREARE LE RICHIESE POST E GET
 @CrossOrigin
 @RestController
 @RequestMapping("/cart")
@@ -40,13 +40,15 @@ public class CartController {
     @Autowired
     ProductInOrderRepository productInOrderRepository;
 
+    //UNISCE IL CARRELLO DELLA SESSIONE CON L'UTENTE AUTENTICATO
+    //productInOrders sono gli articoli nel carrello e principal l'utente autenticato
     @PostMapping("")
     public ResponseEntity<Cart> mergeCart(@RequestBody Collection<ProductInOrder> productInOrders, Principal principal) {
         User user = userService.findOne(principal.getName());
         try {
             cartService.mergeLocalCart(productInOrders, user);
         } catch (Exception e) {
-            ResponseEntity.badRequest().body("Merge Cart Failed");
+            ResponseEntity.badRequest().body("Errore con il carrello");
         }
         return ResponseEntity.ok(cartService.getCart(user));
     }
@@ -62,6 +64,7 @@ public class CartController {
     public boolean addToCart(@RequestBody ItemForm form, Principal principal) {
         var productInfo = productService.findOne(form.getProductId());
         try {
+            //Uso singleton affinche il risultato sia immutabile, contenga solo quell'elemento e non possa essere modificato
             mergeCart(Collections.singleton(new ProductInOrder(productInfo, form.getQuantity())), principal);
         } catch (Exception e) {
             return false;
@@ -80,13 +83,13 @@ public class CartController {
     public void deleteItem(@PathVariable("itemId") String itemId, Principal principal) {
         User user = userService.findOne(principal.getName());
          cartService.delete(itemId, user);
-         // flush memory into DB
+         // svuota la memoria del db
     }
 
 
     @PostMapping("/checkout")
     public ResponseEntity checkout(Principal principal) {
-        User user = userService.findOne(principal.getName());// Email as username
+        User user = userService.findOne(principal.getName());// Email come username
         cartService.checkout(user);
         return ResponseEntity.ok(null);
     }

@@ -25,6 +25,7 @@ public class OrderController {
     @Autowired
     UserService userService;
 
+    //restituisce tutti gli ordini dell'utente autenticato, se è l'admin restituisce gli ordini complessivi
     @GetMapping("/order")
     public Page<OrderMain> orderList(@RequestParam(value = "page", defaultValue = "1") Integer page,
                                      @RequestParam(value = "size", defaultValue = "10") Integer size,
@@ -38,17 +39,17 @@ public class OrderController {
             System.out.println("SONO NELL'IF");
             orderPage = orderService.findByBuyerEmail(authentication.getName(), request);
             System.out.println("Mi ha dato: "+orderPage);
-            System.out.println("La mail è :"+authentication.getCredentials());
-            System.out.println("Il nome è: "+authentication.getName());
+            System.out.println("La mail è: "+authentication.getName());
         } else {
             System.out.println("SONO NELL'ELSE");
             orderPage = orderService.findAll(request);
         }
-        System.out.println("SONO FUORI");
+        System.out.println("SONO FUORI DAL TUNNELELELELEL");
         return orderPage;
     }
 
 
+    //Indovina un po? esatto cancella l'ordine
     @PatchMapping("/order/cancel/{id}")
     public ResponseEntity<OrderMain> cancel(@PathVariable("id") Long orderId, Authentication authentication) {
         OrderMain orderMain = orderService.findOne(orderId);

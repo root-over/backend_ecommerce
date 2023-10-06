@@ -21,32 +21,26 @@ public class ProductInfo implements Serializable {
     @Id
     private String productId;
 
-    /** 名字. */
     @NotNull
     private String productName;
 
-    /** 单价. */
     @NotNull
     private BigDecimal productPrice;
 
-    /** 库存. */
     @NotNull
     @Min(0)
     private Integer productStock;
 
-    /** 描述. */
     private String productDescription;
 
-    /** 小图. */
     private String productIcon;
 
-    /** 0: on-sale 1: off-sale */
 
     @ColumnDefault("0")
     private Integer productStatus;
 
 
-   /** 类目编号. */
+
     @ColumnDefault("0")
     private Integer categoryType;
 
