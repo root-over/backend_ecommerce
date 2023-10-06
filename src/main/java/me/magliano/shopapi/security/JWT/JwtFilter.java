@@ -31,8 +31,8 @@ public class JwtFilter extends OncePerRequestFilter {
             try {
                 String userAccount = jwtProvider.getUserAccount(jwt);
                 User user = userService.findOne(userAccount);
-                // pwd not necessary
-                // if jwt ok, then authenticate
+                // pwd non necessaria
+                // se jwt ok, se no autenticazione classica
                 SimpleGrantedAuthority sga = new SimpleGrantedAuthority(user.getRole());
                 ArrayList<SimpleGrantedAuthority> list = new ArrayList<>();
                 list.add(sga);
@@ -41,7 +41,7 @@ public class JwtFilter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(auth);
 
             } catch (Exception e) {
-                logger.error("Set Authentication from JWT failed");
+                logger.error("Authenticazione da JWT fallita");
             }
         }
         filterChain.doFilter(httpServletRequest, httpServletResponse);
@@ -50,8 +50,8 @@ public class JwtFilter extends OncePerRequestFilter {
     private String getToken(HttpServletRequest request) {
         String authHeader = request.getHeader("Authorization");
 
-        if (authHeader != null && authHeader.startsWith("Bearer ")) {
-            return authHeader.replace("Bearer ", "");
+        if (authHeader != null && authHeader.startsWith("Bearer ")) {// Verifica se l'intestazione Authorization non è nulla e inizia con la stringa "Bearer ".
+            return authHeader.replace("Bearer ", ""); // Se la verifica è positiva, viene restituita la sottostringa dell'intestazione che inizia dopo "Bearer
         }
 
         return null;

@@ -7,10 +7,10 @@ import java.util.List;
 
 
 public interface ProductCategoryRepository extends JpaRepository<ProductCategory, Integer> {
-    // Some category
+    // Alcune categoriey
     List<ProductCategory> findByCategoryTypeInOrderByCategoryTypeAsc(List<Integer> categoryTypes);
-    // All category
+    // Tutte le categorie
     List<ProductCategory> findAllByOrderByCategoryType();
-    // One category
+    // Una categoria
     ProductCategory findByCategoryType(Integer categoryType);
 }

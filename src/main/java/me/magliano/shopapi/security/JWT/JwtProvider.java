@@ -38,7 +38,7 @@ public class JwtProvider {
             Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token);
             return true;
         } catch (Exception e) {
-            logger.error("JWT Authentication Failed");
+            logger.error("JWT Autenticazione fallita");
         }
         return false;
     }

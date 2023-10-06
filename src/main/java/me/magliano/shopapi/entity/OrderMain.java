@@ -46,7 +46,7 @@ public class OrderMain implements Serializable {
     @NotEmpty
     private String buyerAddress;
 
-    // Total Amount
+    // Totale
     @NotNull
     private BigDecimal orderAmount;
 
@@ -66,6 +66,7 @@ public class OrderMain implements Serializable {
         this.buyerName = buyer.getName();
         this.buyerPhone = buyer.getPhone();
         this.buyerAddress = buyer.getAddress();
+        //calcola l'importo totale
         this.orderAmount = buyer.getCart().getProducts().stream().map(item -> item.getProductPrice().multiply(new BigDecimal(item.getCount())))
                 .reduce(BigDecimal::add)
                 .orElse(new BigDecimal(0));

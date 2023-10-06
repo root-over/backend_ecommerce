@@ -15,17 +15,17 @@ import java.io.IOException;
 @Component
 public class JwtEntryPoint implements AuthenticationEntryPoint {
 
-
+    //Non ricordo cosa fa e non ho voglia di controllare
     private static final Logger logger = LoggerFactory.getLogger(JwtEntryPoint.class);
 
-    // called if authentication failed
+    // Viene chiamata se l'autenticazione fallisce
     @Override
     public void commence(HttpServletRequest request,
                          HttpServletResponse response,
                          AuthenticationException e)
             throws IOException {
 
-        logger.error("Unauthorized error. Message - {}", e.getMessage());
+        logger.error("errore. Mess - {}", e.getMessage());
         response.setStatus(HttpStatus.UNAUTHORIZED.value());
     }
 }

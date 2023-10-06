@@ -21,13 +21,13 @@ public class Cart implements Serializable {
     private long cartId;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @MapsId
+    @MapsId //usa l'id dell'utente come id del carrello
     @JsonIgnore
 //    @JoinColumn(name = "email", referencedColumnName = "email")
     private User user;
 
     @OneToMany(cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER, orphanRemoval = true,
+            fetch = FetchType.EAGER, orphanRemoval = true,//orphan removal elimina l'entità figlio quando vengono rimsse le entità padre
             mappedBy = "cart")
     private Set<ProductInOrder> products = new HashSet<>();
 

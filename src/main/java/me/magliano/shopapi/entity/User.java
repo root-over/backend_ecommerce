@@ -27,7 +27,7 @@ public class User implements Serializable {
     @NotEmpty
     private String email;
     @NotEmpty
-    @Size(min = 3, message = "Length must be more than 3")
+    @Size(min = 3, message = "Deve essere più lungo di 3 caratteri")
     private String password;
     @NotEmpty
     private String name;
@@ -41,7 +41,7 @@ public class User implements Serializable {
     private String role = "ROLE_CUSTOMER";
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnore  // fix bi-direction toString() recursion problem
+    @JsonIgnore
     private Cart cart;
 
 

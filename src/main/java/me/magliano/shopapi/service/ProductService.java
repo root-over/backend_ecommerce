@@ -9,17 +9,17 @@ public interface ProductService {
 
     ProductInfo findOne(String productId);
 
-    // All selling products
+    // Tutti i prodotti in vendita
     Page<ProductInfo> findUpAll(Pageable pageable);
-    // All products
+    // Tutti i prodotti
     Page<ProductInfo> findAll(Pageable pageable);
-    // All products in a category
+    // Tutti i prodotti in una categoria
     Page<ProductInfo> findAllInCategory(Integer categoryType, Pageable pageable);
 
-    // increase stock
+    // Incrementa la disponibilità
     void increaseStock(String productId, int amount);
 
-    //decrease stock
+    //Decrementa la disponibilità
     void decreaseStock(String productId, int amount);
 
     ProductInfo offSale(String productId);

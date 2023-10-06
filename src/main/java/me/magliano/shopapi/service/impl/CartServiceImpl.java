@@ -83,11 +83,11 @@ public class CartServiceImpl implements CartService {
     @Override
     @Transactional
     public void checkout(User user) {
-        // Creat an order
+        // Crea un ordine
         OrderMain order = new OrderMain(user);
         orderRepository.save(order);
 
-        // clear cart's foreign key & set order's foreign key& decrease stock
+        //Pulisce la foreign key del carrello, setta la foreign key dell'ordine e decrementa la disponibilità
         user.getCart().getProducts().forEach(productInOrder -> {
             productInOrder.setCart(null);
             productInOrder.setOrderMain(order);
