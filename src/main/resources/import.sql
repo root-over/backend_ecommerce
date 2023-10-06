@@ -9,7 +9,7 @@ INSERT INTO "public"."product_category" VALUES (2147483645, 'Matematica', 1, '20
 
 
 -- ----------------------------
--- Records of product_in_order
+-- product_in_order
 -- ----------------------------
 INSERT INTO "public"."product_in_order" VALUES (200, 0,1,'Questo volume è dedicato a Python, un linguaggio di programmazione diffuso da anni tra i professionisti grazie alla sua potenza e semplicità sintattica, e di utilizzo sempre più frequente anche in ambito universitario. ', 'https://m.media-amazon.com/images/I/71U+96Efl+L._SL1500_.jpg', '8891605085', 'Concetti di informatica e fondamenti di Python', 70.00,100,NULL, 2147483641);
 
@@ -29,16 +29,12 @@ INSERT INTO "public"."product_info" VALUES ('8817050164', 3, '2023-03-10 10:40:3
 -- ----------------------------
 -- Utenti
 -- ----------------------------
-INSERT INTO "public"."users" VALUES (2147483641, 't', '3200 West Road', 'customer1@email.com', 'customer1', '$2a$10$PrI5Gk9L.tSZiW9FXhTS8O8Mz9E97k2FZbFvGFFaSsiTUIl.TCrFu', '123456789', 'ROLE_CUSTOMER');
-INSERT INTO "public"."users" VALUES (2147483642, 't', '2000 John Road', 'manager1@email.com', 'manager1', '$2a$10$PrI5Gk9L.tSZiW9FXhTS8O8Mz9E97k2FZbFvGFFaSsiTUIl.TCrFu', '987654321', 'ROLE_MANAGER');
-INSERT INTO "public"."users" VALUES (2147483643, 't', '222 East Drive ', 'employee1@email.com', 'employee1', '$2a$10$PrI5Gk9L.tSZiW9FXhTS8O8Mz9E97k2FZbFvGFFaSsiTUIl.TCrFu', '123123122', 'ROLE_EMPLOYEE');
-INSERT INTO "public"."users" VALUES (2147483645, 't', '3100 Western Road A', 'customer2@email.com', 'customer2', '$2a$10$0oho5eUbDqKrLH026A2YXuCGnpq07xJpuG/Qu.PYb1VCvi2VMXWNi', '2343456', 'ROLE_CUSTOMER');
+INSERT INTO "public"."users" VALUES (2147483641, 't', 'Via utente', 'utente@utente.com', 'utente', '$2a$10$PrI5Gk9L.tSZiW9FXhTS8O8Mz9E97k2FZbFvGFFaSsiTUIl.TCrFu', '123456789', 'ROLE_CUSTOMER');
+INSERT INTO "public"."users" VALUES (2147483642, 't', 'Via admin', 'admin@admin.com', 'admin', '$2a$10$PrI5Gk9L.tSZiW9FXhTS8O8Mz9E97k2FZbFvGFFaSsiTUIl.TCrFu', '987654321', 'ROLE_MANAGER');
 -- ----------------------------
 -- Carrelli degli utenti
 -- ----------------------------
 INSERT INTO "public"."cart" VALUES (2147483641);
 INSERT INTO "public"."cart" VALUES (2147483642);
-INSERT INTO "public"."cart" VALUES (2147483643);
-INSERT INTO "public"."cart" VALUES (2147483645);
 
 
