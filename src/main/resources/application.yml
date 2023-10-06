@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ecommerce
+    username: postgres
+    password:
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    open-in-view: false
+
+
+
+
+
+
+  queries:
+    users-query: select email, password, active from users where email=?
+    roles-query: select email, role from users where email=?
+server:
+  servlet:
+    contextPath: /api
+
+jwtSecret: me.zhulin
+jwtExpiration: 86400
